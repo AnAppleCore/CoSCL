@@ -133,3 +133,4 @@ dmypy.json
 datasets/
 scripts/
 result/
+*tiny-imagenet-200*
