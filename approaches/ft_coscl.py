@@ -106,7 +106,9 @@ class Appr(object):
             targets=y[b]
 
             # Forward current model
-            outputs = self.model.forward(images,t)
+            # outputs = self.model.forward(images,t)
+            task = torch.autograd.Variable(torch.LongTensor([t]).cuda())
+            outputs = self.model.forward(images, task)
             loss=self.criterion(t,outputs,targets)
 
             # Backward
@@ -132,8 +134,9 @@ class Appr(object):
             targets=y[b]
 
             # Forward
-            
-            output = self.model.forward(images, t)
+            task = torch.autograd.Variable(torch.LongTensor([t]).cuda())
+            output = self.model.forward(images, task)
+            # output = self.model.forward(images, t)
             
             loss=self.criterion(t,output,targets)
             _,pred=output.max(1)

@@ -13,7 +13,8 @@ import pandas as pd
 from PIL import Image
 from sklearn.feature_extraction import image
 from arguments import get_args
-args = get_args()
+#FIXME
+# args = get_args()
 
 def gs_cal(t, x, y, criterion, model, sbatch=20):
     
@@ -143,10 +144,10 @@ def print_optimizer_config(optim):
 ########################################################################################################################
 def copy_model(model):
     for module_ in model.net:
-        if isinstance(module_, ModuleList):
+        if isinstance(module_, nn.ModuleList):
             for linear_ in module_:
                 linear_.clean()
-        if isinstance(module_, ReLU) or isinstance(module_, Linear) or isinstance(module_, Conv2d) or isinstance(module_, MaxPool2d) or isinstance(module_, Dropout):
+        if isinstance(module_, nn.ReLU) or isinstance(module_, nn.Linear) or isinstance(module_, nn.Conv2d) or isinstance(module_, nn.MaxPool2d) or isinstance(module_, nn.Dropout):
             module_.clean()
 
     return deepcopy(model)

@@ -214,7 +214,7 @@ class Appr(object):
                     #print("y_er", y_er)
                     # outputs_ = self.model.forward(x_er)[t_old]
                     task_old = torch.autograd.Variable(torch.LongTensor([t_old]).cuda())
-                    outputs_ = self.model.forward(x_er, task_old)
+                    outputs_ = self.model.forward(x_er)[task_old]
                     loss += self.criterion(t_old, outputs_, y_er)
 
             # Backward

@@ -134,3 +134,4 @@ datasets/
 scripts/
 result/
 *tiny-imagenet-200*
+result_data/
